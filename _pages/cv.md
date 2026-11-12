@@ -20,5 +20,5 @@ Work Experience
 
 🏆 Awards
 ======
-* 2025.11 National Prize
+* 2025 National Award, 7th Global Campus AI Algorithm Elite Competition (AIC), National Finals.
 * 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling (MCM/ICM), Honorable Mention (F Prize).

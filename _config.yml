@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Zidong Zeng | 曾子东"
+title                    : "Zidong Zeng"
 title_separator          : "-"
 name                     : &name "Zidong Zeng"
-description              : &description "personal description"
+description              : &description "Zidong Zeng studies computer science at Northeastern University and researches LLM agents at ONE Lab."
 url                      : "https://zidong-zeng.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Zidong-Zeng/Zidong-Zeng.github.io"
@@ -29,7 +29,7 @@ author:
   employer         : "ONE Lab"
   uri              : # URL
   email            : "zeng20050901@gmail.com"
-  email_secondary  : "2652015039@qq.com"
+  email_secondary  : "zidongzeng2005@gmail.com"
 
   # Academic websites
   googlescholar    : ""

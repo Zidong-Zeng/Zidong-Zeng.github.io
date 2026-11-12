@@ -1,0 +1,119 @@
+---
+layout: compress
+---
+{% assign author = site.author %}
+<!doctype html>
+<html lang="{{ site.locale | default: 'en' | replace: '_', '-' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f6ef">
+    <meta name="description" content="{{ page.excerpt | escape }}">
+    {% include seo.html %}
+    <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="shell header-inner">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <span class="brand-mark" aria-hidden="true">Z</span>
+          {{ author.name | escape }}
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#research">Research</a>
+          <a href="#experience">Experience</a>
+          <a href="#awards">Awards</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="shell" tabindex="-1">
+      <section class="hero" aria-labelledby="name">
+        <div class="intro">
+          <p class="eyebrow role">Research Assistant <span aria-hidden="true">/</span> {{ author.employer | escape }}</p>
+          <h1 id="name">{{ author.name | escape }}</h1>
+          <div class="bio">{{ content }}</div>
+          <div class="contact-links">
+            {% if author.email %}
+              <a class="contact-button contact-primary" href="mailto:{{ author.email | escape }}">Email me <span aria-hidden="true">↗</span></a>
+            {% endif %}
+            {% if author.github %}
+              <a class="contact-button" href="https://github.com/{{ author.github | escape }}">GitHub <span aria-hidden="true">↗</span></a>
+            {% endif %}
+            {% if author.email_secondary %}
+              <a class="contact-secondary" href="mailto:{{ author.email_secondary | escape }}">Alternate email</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <figure class="portrait">
+          <div class="portrait-frame">
+            <img src="{{ author.avatar | prepend: '/images/' | relative_url }}" alt="Portrait of {{ author.name | escape }}" width="600" height="600" fetchpriority="high">
+          </div>
+          <figcaption class="eyebrow">
+            <span class="location-mark" aria-hidden="true"></span>
+            {{ author.location | escape }}
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="research" id="research" aria-labelledby="research-heading">
+        <h2 id="research-heading">Research Interests</h2>
+        <ul class="research-grid" role="list">
+          {% for topic in page.research %}
+            <li class="research-card">
+              <span class="topic-icon topic-icon--{{ topic.icon }}" aria-hidden="true"><span></span></span>
+              <h3>{{ topic.title | escape }}</h3>
+              <p>{{ topic.description | escape }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <div class="background">
+        <section id="experience" aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Education &amp; Experience</h2>
+          <ul class="timeline" role="list">
+            {% for entry in page.experience %}
+              <li{% if entry.current %} class="current"{% endif %}>
+                <div>
+                  <h3>{{ entry.organization | escape }}</h3>
+                  <p>{% if entry.detail %}{{ entry.detail | escape }} <span aria-hidden="true">·</span> {% endif %}{{ entry.location | escape }}</p>
+                </div>
+                <span class="eyebrow period">{{ entry.period | escape }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+        <section id="awards" aria-labelledby="awards-heading">
+          <h2 id="awards-heading">Awards</h2>
+          <ul class="awards-list" role="list">
+            {% for award in page.awards %}
+              <li>
+                <span class="eyebrow period">{{ award.period | escape }}</span>
+                <h3>{{ award.title | escape }}</h3>
+                {% if award.detail %}<p>{{ award.detail | escape }}</p>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="shell site-footer">
+      <div>
+        <span>&copy; {{ site.time | date: '%Y' }} {{ author.name | escape }}</span>
+        <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>
+        {% if site.atom_feed.hide != true %}
+          <a href="{{ site.atom_feed.path | default: '/feed.xml' | relative_url }}">RSS</a>
+        {% endif %}
+      </div>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </footer>
+  </body>
+</html>
